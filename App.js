@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
+import GoalItem from "./components/GoalItem";
+import GoalInput from "./components/GoalInput";
 
 export default function App() {
-
-  const [goal, setGoal] = useState("");
+  
   const [goals, setGoals] = useState([]);
 
-  const inputHandler = (value) => {
-    setGoal(value);
-  }
-
-  const addBtnHandler = () => {
+  const addBtnHandler = (goal) => {
     setGoals(currentGoals => [
       ...currentGoals, 
       {
@@ -20,29 +17,19 @@ export default function App() {
     ]);
   }
 
+  const deleteItem = (itemID) => {
+    setGoals(goals => {
+      return goals.filter((goal) => goal.key != itemID);
+    });
+  }
+
   return (
     <View style={{flex:1}}>
-      <View style = {styles.screen}>
-        <View 
-          style = {styles.inputContainer}>
-        <TextInput 
-          placeholder="Your goal?" 
-          style={styles.input} 
-          onChangeText={inputHandler}
-          value={goal}
-          />  
-        </View>
-        <View 
-          style = {styles.buttonContainer}>
-          <Button title="ADD GOAL" onPress={addBtnHandler} />
-        </View>
-      </View>
+      <GoalInput onAddGoal={addBtnHandler} />
       <FlatList
         data={goals} 
         renderItem={goal => 
-          <View>
-          <Text style={styles.goals}>{goal.item.value}</Text>
-          </View>        
+          <GoalItem id = {goal.item.key} item = {goal.item.value} onDelete = {deleteItem}/>
       }>
       </FlatList>
     </View>
@@ -50,32 +37,5 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  screen:{
-    flexDirection:"row", 
-    padding:20,
-    width:'100%',
-    height: 150,
-    justifyContent:"space-between",
-    alignItems:'stretch'    
-  },
-  inputContainer:{
-    backgroundColor:"#eee",
-    justifyContent:"center", 
-    alignItems:"center",
-    flex:3
-  },
-  input:{
-    borderBottomWidth:1, 
-    borderBottomColor:"#aaa", 
-    padding:10, width:'80%'
-  },
-  buttonContainer:{
-    backgroundColor:"#ddd",
-    justifyContent:"center", 
-    alignItems:"center",
-    flex:2   
-  },
-  goals:{
-    marginVertical:10
-  }
+
 });
