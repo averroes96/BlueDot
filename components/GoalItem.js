@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
     goals:{
         marginVertical:10,
         backgroundColor: "#eee",
-        width:"25%"
+        padding:10,
+        alignItems:"center",
+        borderBottomWidth:1
     }
 });
 
