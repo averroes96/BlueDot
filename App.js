@@ -9,6 +9,9 @@ export default function App() {
   const [modal, setModal] = useState(false);
 
   const addBtnHandler = (goal) => {
+    if(goal.length == 0)
+      return;
+
     setGoals(currentGoals => [
       ...currentGoals, 
       {
@@ -30,7 +33,7 @@ export default function App() {
   }  
 
   return (
-    <View style={{flex:1}}>
+    <View style={{flex:1, padding: 50}}>
       <Button title="Add Goals" onPress={() => setModal(true)}/>
       <GoalInput visible={modal} onAddGoal={addBtnHandler} onCancel={cancelAction} />
       <FlatList
