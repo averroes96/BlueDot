@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
+import Header from "./components/Header";
+import Home from "./screens/Home";
 
 export default function App() {
   
@@ -33,7 +35,13 @@ export default function App() {
   }  
 
   return (
-    <View style={{flex:1, padding: 50}}>
+    <View style={styles.screen}>
+      <Header/>
+      <Home/>
+    </View>
+
+
+    /*<View style={{flex:1, padding: 50}}>
       <Button title="Add Goals" onPress={() => setModal(true)}/>
       <GoalInput visible={modal} onAddGoal={addBtnHandler} onCancel={cancelAction} />
       <FlatList
@@ -42,10 +50,12 @@ export default function App() {
           <GoalItem id = {goal.item.key} item = {goal.item.value} onDelete = {deleteItem}/>
       }>
       </FlatList>
-    </View>
+    </View>*/
   );
 }
 
 const styles = StyleSheet.create({
-
+    screen:{
+      flex:1
+    }
 });
