@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         paddingTop: 32,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        elevation:3
     },
     logoStyle:{
         width:"30%",
