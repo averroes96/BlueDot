@@ -1,5 +1,6 @@
 import React from "react";
 import {TextInput, StyleSheet} from "react-native";
+
 import Colors from "../init/Colors";
 
 const Input = props => {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
     input:{
         marginVertical:20,
         height: 40,
-        borderBottomColor: "grey",
+        borderBottomColor: Colors.secondary,
         borderBottomWidth: 1
     }   
 });
