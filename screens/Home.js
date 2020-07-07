@@ -45,6 +45,7 @@ const Home = props => {
         Keyboard.dismiss();
         
     }
+  
     
 
     if(confirmed){
