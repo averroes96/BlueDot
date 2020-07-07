@@ -1,14 +1,23 @@
 import React from "react";
+import { Text } from "react-native";
 import Sidebar from 'react-native-sidebar';
 
 const MySideBar = props => {
+
+	const renderLeftSidebar = () => {
+		return <Text> Left side bar</Text>;
+	}
+
+	const renderRightSidebar = () => {
+		return <Text> Right side bar</Text>;
+	}	
 	return (
 		<Sidebar
 				ref={(ref) => this._drawer = ref}
-				leftSidebar={ this.renderLeftSidebar() }
-				rightSidebar={ this.renderRightSidebar() }
+				leftSidebar={ <Text> Left side bar</Text> }
+				rightSidebar={ <Text> Left side bar</Text> }
 				style={{ flex: 1, backgroundColor: 'black' }}>
-			{ this.renderContent() }
+			{ <Text>Hello there !</Text> }
 		</Sidebar>
 	)
 }

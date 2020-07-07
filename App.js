@@ -1,13 +1,56 @@
 import React, {useState} from 'react';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 //import GoalItem from "./components/GoalItem";
 //import GoalInput from "./components/GoalInput";
 import MyHeader from "./screens/MyHeader";
 import Home from "./screens/Home";
-import MySideBar from "./screens/MySideBar";
 //import Game from "./screens/Game";
 //import GameOver from "./screens/GameOver";
 //import Posts from "./screens/Posts";
+
+function HomeAction({ navigation }) {
+  return (
+    <View>
+      <MyHeader onMenu={() => navigation.openDrawer()} />
+      <Home />
+    </View>
+    
+  );
+}
+
+function CustomDrawerContent(props){
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem
+        label="Close drawer"
+        onPress={() => props.navigation.closeDrawer()}
+      />
+      <DrawerItem
+        label="Toggle drawer"
+        onPress={() => props.navigation.toggleDrawer()}
+      />
+    </DrawerContentScrollView>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
+      <Drawer.Screen name="Home" component={HomeAction} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function App() {
   /*
@@ -59,26 +102,13 @@ export default function App() {
   }
   else if( rounds > 0){
     content = <GameOver numRounds={rounds} />
-  }*/
-
-  const [sideBar, setSideBar] = useState(false);
-  let sidebar;
-
-  const menuAction = () => {
-      setSideBar(true);
-  }
-
-  if(sideBar){
-      sidebar = <MySideBar />
-  }    
+  }*/  
 
   return (
-    <View style={styles.screen}>
-      <MyHeader onMenu={menuAction}/>
-      <Home />
-      {sidebar}      
-    </View>
 
+    <NavigationContainer>
+        <MyDrawer />
+    </NavigationContainer>
 
     /*<View style={{flex:1, padding: 50}}>
       <Button title="Add Goals" onPress={() => setModal(true)}/>

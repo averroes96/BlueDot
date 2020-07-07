@@ -14,7 +14,7 @@ import NumberContainer from "../components/NumberContainer";
 import Colors from "../init/Colors";
 
 const Home = props => {
-
+/*
     const [val, setValue] = useState("");
     const [confirmed, setConfirmed] = useState(false);
     const [selected, setSelected] = useState("");
@@ -56,14 +56,16 @@ const Home = props => {
             <Button color={Colors.primary} title="Start" onPress={ () => props.onStart(selected)} />
         </Card>
         );
-    }
+    }*/
     
     return (
         <TouchableWithoutFeedback 
             onPress= {() => {
                Keyboard.dismiss(); 
             } }>
+                
             <View style={styles.screen}>
+                {/*}
                 <Card style={styles.inputContainer}>
                     <Input 
                         blurOnSubmit 
@@ -82,7 +84,7 @@ const Home = props => {
                         </View>
                     </View>                
                 </Card>
-                {output}
+                {output}{*/}
             </View>
             
         </TouchableWithoutFeedback>

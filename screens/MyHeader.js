@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image} from "react-native";
 import { Icon, Header} from "react-native-elements";
 import logo from "../assets/logo.png"; 
 import Colors from "../init/Colors";
-import SideBar from "./MySideBar";
+import MySideBar from "./MySideBar";
 
 const MyHeader = props => {
 
@@ -15,7 +15,7 @@ const MyHeader = props => {
     }
 
     if(sideBar){
-        sidebar = <SideBar />
+        sidebar = <MySideBar />
     }
     return(
         /*<View style={styles.header}>
