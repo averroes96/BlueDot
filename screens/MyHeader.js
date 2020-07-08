@@ -3,20 +3,9 @@ import { View, Text, StyleSheet, Image} from "react-native";
 import { Icon, Header} from "react-native-elements";
 import logo from "../assets/logo.png"; 
 import Colors from "../init/Colors";
-import MySideBar from "./MySideBar";
 
 const MyHeader = props => {
 
-    const [sideBar, setSideBar] = useState(false);
-    let sidebar;
-
-    const menuAction = () => {
-        setSideBar(true)
-    }
-
-    if(sideBar){
-        sidebar = <MySideBar />
-    }
     return(
         /*<View style={styles.header}>
             <View>

@@ -46,8 +46,17 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="Home" component={HomeAction} />
+    <Drawer.Navigator 
+      drawerStyle={{
+        width: 300,
+      }} 
+      drawerContent={props => <CustomDrawerContent {...props} />} 
+      initialRouteName="Home" >
+        <Drawer.Screen name="الرئيسية" component={HomeAction}/>
+        <Drawer.Screen name="مقالات" component={HomeAction} />
+        <Drawer.Screen name="مراجعات" component={HomeAction} />
+        <Drawer.Screen name="حوارات" component={HomeAction} />
+        <Drawer.Screen name="إنضم إلينا" component={HomeAction} />
     </Drawer.Navigator>
   );
 }
@@ -126,5 +135,8 @@ export default function App() {
 const styles = StyleSheet.create({
     screen:{
       flex:1
+    },
+    sideItems:{
+      textAlign: "right"
     }
 });
